@@ -9,11 +9,11 @@ template <class T>
 class Stack
 {
 public:
-    Stack(){first.next = nullptr;}
+    Stack(){first.next = nullptr; N = 0;}
     bool isEmpty();
     int size();
     void push(T item);
-    T pop();
+    bool pop(T &item);
 
 private:
     class Node
@@ -22,7 +22,7 @@ private:
         T item;
         Node * next;
     };
-    int N;          //
+    int N{};          //
     Node first;
 };
 
@@ -43,26 +43,23 @@ void Stack<T>::push(T item)
 {
     Node *tempItem;
     tempItem = new Node();
-    if(tempItem != nullptr)
-    {
-        tempItem->next = first.next;
-        tempItem->item = item;
-        first.next = tempItem;
-    }
+    tempItem->next = first.next;
+    tempItem->item = item;
+    first.next = tempItem;
 }
 
 template <class T>
-T Stack<T>::pop()
+bool Stack<T>::pop(T &item)
 {
-    T Ret;
     Node * pNode = first.next;
     if(pNode != nullptr)
     {
-        Ret = pNode->item;
+        item = pNode->item;
         first.next = pNode->next;
         delete pNode;
+        return true;
     }
-    return Ret;
+    return false;
 }
 
 #endif //C___STACK_H
