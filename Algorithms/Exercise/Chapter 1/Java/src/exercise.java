@@ -1,4 +1,4 @@
-import sun.lwawt.macosx.CSystemTray;
+//import sun.lwawt.macosx.CSystemTray;
 
 import java.util.Scanner;
 
