@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/lilin/code/Learning-record/Algorithms/algorithms/Chapter_2/C++/InsertSort.h
+iostream
+-
+vector
+-
+
+/Users/lilin/code/Learning-record/Algorithms/algorithms/Chapter_2/C++/SelectSort.h
+vector
+-
+
+/Users/lilin/code/Learning-record/Algorithms/algorithms/Chapter_2/C++/main.cpp
+iostream
+-
+vector
+-
+SelectSort.h
+/Users/lilin/code/Learning-record/Algorithms/algorithms/Chapter_2/C++/SelectSort.h
+InsertSort.h
+/Users/lilin/code/Learning-record/Algorithms/algorithms/Chapter_2/C++/InsertSort.h
+
