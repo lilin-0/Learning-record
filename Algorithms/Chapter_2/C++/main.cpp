@@ -2,6 +2,7 @@
 #include <vector>
 #include "SelectSort.h"
 #include "InsertSort.h"
+#include "ShellSort.h"
 using namespace std;
 int main()
 {
@@ -9,7 +10,8 @@ int main()
 
     vector<int> x ={5,9,2,4,1,6,7,3,5,7,1,9};
     //SelectSort::sort(x);
-    InsertSort(x);
+    //InsertSort(x);
+    ShellSort(x);
     for(auto a : x)
         cout<<a<<' ';
     cout<<endl;
