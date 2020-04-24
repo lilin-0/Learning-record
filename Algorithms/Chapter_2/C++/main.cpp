@@ -1,17 +1,18 @@
 #include <iostream>
 #include <vector>
-#include "SelectSort.h"
-#include "InsertSort.h"
-#include "ShellSort.h"
+#include <cstdio>
+//#include "SelectSort.h"
+//#include "InsertSort.h"
+//#include "ShellSort.h"
+#include "MergeSort.h"
 using namespace std;
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
 
     vector<int> x ={5,9,2,4,1,6,7,3,5,7,1,9};
     //SelectSort::sort(x);
     //InsertSort(x);
-    ShellSort(x);
+    sort(x,0,x.size() - 1);
     for(auto a : x)
         cout<<a<<' ';
     cout<<endl;
