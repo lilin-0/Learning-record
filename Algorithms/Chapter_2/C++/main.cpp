@@ -12,7 +12,7 @@ int main()
     vector<int> x ={5,9,2,4,1,6,7,3,5,7,1,9};
     //SelectSort::sort(x);
     //InsertSort(x);
-    sort(x,0,x.size() - 1);
+    mergesort(x,0,x.size() - 1);
     for(auto a : x)
         cout<<a<<' ';
     cout<<endl;
