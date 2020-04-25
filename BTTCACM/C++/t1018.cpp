@@ -2,7 +2,7 @@
  * @Description: ***
  * @Author: Lilin
  * @Date: 2020-04-25 11:05:27
- * @LastEditTime: 2020-04-25 12:25:04
+ * @LastEditTime: 2020-04-25 19:04:18
  */
 #include <iostream>
 #include <vector>
@@ -42,12 +42,20 @@ void merge(int* vArr,int ibegin, int imid, int iend)
 //void mergesort(vector<int> &vArr, int ibegin, int iend)
 void mergesort(int * vArr, int ibegin, int iend)
 {
-    if (ibegin >= iend)
+    /*if (ibegin >= iend)
         return;
     int imid = (ibegin + iend) / 2;
     mergesort(vArr, ibegin, imid);
     mergesort(vArr, imid + 1, iend);
-    merge(vArr, ibegin, imid, iend);
+    merge(vArr, ibegin, imid, iend);*/
+    //使用非递归方式
+    for (int i = 1; i <= iend; i += i)  //子数组长度
+    {
+        for (int j = 0; j < iend - i + 1; j += i+i) //子数组索引
+        {
+            merge(vArr, j, j + i - 1, min(j + i + i - 1, iend));
+        }
+    }
 }
 
 int main()
