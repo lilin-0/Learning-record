@@ -7,29 +7,33 @@
 
 #include <iostream>
 #include <vector>
-#include "InsertSort.h"
-using std::vector;
-using std::cout;
-using std::endl;
+#include "sort_public.h"
 
-void ShellSort(vector<int>& a)
+namespace ShellSort
 {
-    int Len = a.size();
-    int h = 1;
-    while(h < Len / 3)
+    using std::vector;
+
+    template <class T>
+    void sort(vector<T>& a)
     {
-        h = h*3 + 1;
-    }
-    while(h >= 1)
-    {
-        for(int i = h; i < Len; i++)
+        int Len = a.size();
+        int h = 1;
+        while(h < Len / 3)
         {
-            for(int j = i; j >= h && a[j] < a[j-h]; j -= h)
-            {
-                exch(a[j],a[j-h]);
-            }
+            h = h*3 + 1;
         }
-        h /= 3;
+        while(h >= 1)
+        {
+            for(int i = h; i < Len; i++)
+            {
+                for(int j = i; j >= h && a[j] < a[j-h]; j -= h)
+                {
+                    exch(a[j],a[j-h]);
+                }
+            }
+            h /= 3;
+        }
     }
-}
+};
+
 #endif //C___SHELLSORT_H

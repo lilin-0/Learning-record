@@ -6,35 +6,29 @@
 #define C___SELECTSORT_H
 
 #include <vector>
-using namespace std;
-class SelectSort
+#include "sort_public.h"
+
+namespace SelectSort
 {
-public:
-    static void sort(vector<int> & a);
-    static void exch(int &x,int &y);
+    using std::vector;
+
+    template <class T>
+    void sort(vector<T> & a)
+    {
+        for(int i = 0; i < a.size(); i++)
+        {
+            int min = i;
+            for(int j = i + 1; j < a.size(); j++)
+            {
+                if(a[min] > a[j])
+                {
+                    min = j;
+                }
+            }
+            exch(a[i],a[min]);
+        }
+    }
 };
 
-void SelectSort::exch(int &x, int &y)
-{
-    int t = x;
-    x = y;
-    y = t;
-}
-
-void SelectSort::sort(vector<int> & a)
-{
-    for(int i = 0; i < a.size(); i++)
-    {
-        int min = i;
-        for(int j = i + 1; j < a.size(); j++)
-        {
-            if(a[min] > a[j])
-            {
-                min = j;
-            }
-        }
-        exch(a[i],a[min]);
-    }
-}
 
 #endif //C___SELECTSORT_H

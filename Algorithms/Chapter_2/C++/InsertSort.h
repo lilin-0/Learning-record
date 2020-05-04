@@ -7,24 +7,25 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
+#include "sort_public.h"
 
-void exch(int &a, int &b)
+namespace InsertSort
 {
-    a ^= b ^= a ^= b;
-}
-
-void InsertSort(vector<int> & arr)
-{
-    for(int i = 1; i < arr.size(); i++)
+    using std::vector;
+    template <class T>
+    void sort(vector<T> & arr)
     {
-        for(int j = i; j >= 0; j--)
+        for(int i = 1; i < arr.size(); i++)
         {
-            if(arr[j] < arr[j-1])
+            for(int j = i; j >= 0; j--)
             {
-                exch(arr[j],arr[j-1]);
+                if(arr[j] < arr[j-1])
+                {
+                    exch(arr[j],arr[j-1]);
+                }
             }
         }
     }
 }
+
 #endif //C___INSERTSORT_H
