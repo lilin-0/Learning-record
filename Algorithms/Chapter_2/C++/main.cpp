@@ -5,6 +5,7 @@
 #include "InsertSort.h"
 #include "ShellSort.h"
 #include "MergeSort.h"
+#include "QuickSort.h"
 using namespace std;
 int main()
 {
@@ -13,9 +14,11 @@ int main()
     //SelectSort::sort(x);
     //InsertSort::sort(x);
     //ShellSort::sort(x);
-    MergeSort::sort(x,0,x.size() - 1);
+    MergeSort::sort(x,1);
+    //QuickSort::sort(x);
     for(auto a : x)
         cout<<a<<' ';
     cout<<endl;
+
     return 0;
 }

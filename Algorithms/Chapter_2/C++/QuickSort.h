@@ -6,20 +6,54 @@
 #define C___QUICKSORT_H
 
 #include <vector>
-using std::vector;
+#include "sort_public.h"
 
 namespace QuickSort
 {
-    template <class T>
-    static void exch(T *arr, int x, int y)
-    {
+    using std::vector;
 
-    }
     template <class T>
-    void sort(T *arr, int iBegin, int iEnd)
+    int partition(vector<T> &arr, int iBegin, int iEnd)
     {
-
+        int i = iBegin, j = iEnd + 1;
+        T Tval = arr[i];
+        while(1)
+        {
+            while(arr[++i] < Tval)
+            {
+                if(i == iEnd)
+                    break;
+            }
+            while(Tval < arr[--j])
+            {
+                if(j == iBegin)
+                    break;
+            }
+            if(i >= j)
+                break;
+            exch(arr[i],arr[j]);
+        }
+        exch(arr[iBegin],arr[j]);
+        return j;
     }
+
+    template <class T>
+    void sort(vector<T> &arr, int iBegin, int iEnd)
+    {
+        if(iBegin >= iEnd)
+            return;
+        int j = partition(arr,iBegin,iEnd);
+        sort(arr, iBegin, j - 1);
+        sort(arr, j + 1, iEnd);
+    }
+
+    template <class T>
+    void sort(vector<T> &arr)
+    {
+        sort(arr, 0, arr.size() - 1);
+    }
+
+
 }
 
 
