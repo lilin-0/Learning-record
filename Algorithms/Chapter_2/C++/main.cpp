@@ -14,8 +14,8 @@ int main()
     //SelectSort::sort(x);
     //InsertSort::sort(x);
     //ShellSort::sort(x);
-    MergeSort::sort(x,1);
-    //QuickSort::sort(x);
+    //MergeSort::sort(x,1);
+    QuickSort::sort(x,1);
     for(auto a : x)
         cout<<a<<' ';
     cout<<endl;

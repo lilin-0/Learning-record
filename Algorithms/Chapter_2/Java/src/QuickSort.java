@@ -1,8 +1,11 @@
 public class QuickSort
 {
-    public static void sort(Comparable[] a)
+    public static void sort(Comparable[] a, int flag)
     {
-        sort(a,0,a.length-1);
+        if(flag == 0)
+            sort(a,0,a.length-1);
+        else
+            sort3way(a,0,a.length-1);
     }
     private static void sort(Comparable[] a, int ibegin, int iend)
     {
@@ -11,6 +14,25 @@ public class QuickSort
         int j = partition(a, ibegin, iend);
         sort(a,ibegin,j-1);
         sort(a,j+1,iend);
+    }
+    private static void sort3way(Comparable[] a, int ibegin, int iend)
+    {
+        if(ibegin >= iend)
+            return;
+        int lt = ibegin, i = ibegin + 1, gt = iend;
+        Comparable v = a[ibegin];
+        while(i <= gt)
+        {
+            int cmp = a[i].compareTo(v);
+            if(cmp < 0)
+                exch(a,lt++,i++);
+            else if(cmp > 0)
+                exch(a,i,gt--);
+            else
+                i++;
+        }
+        sort(a,ibegin,lt-1);
+        sort(a,gt+1,iend);
     }
     private static int partition(Comparable[] a, int ibegin, int iend)
     {
@@ -51,7 +73,7 @@ public class QuickSort
         Integer[] t = new Integer[10];
         for(int i = 0; i < 10; i++)
             t[i] = 10 - i;
-        sort(t);
+        sort(t,1);
         for(int i = 0; i < t.length; i++)
         {
             System.out.print(t[i] + " ");
