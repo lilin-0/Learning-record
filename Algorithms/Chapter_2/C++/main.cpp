@@ -15,6 +15,9 @@ void PQ_TEST()
     pq.insert(4);
     pq.insert(2);
     pq.insert(5);
+    cout<<pq.pop()<<endl;
+    cout<<pq.pop()<<endl;
+    cout<<"AAAAAAAAAAAAAAAAA"<<endl;
     pq.insert(0);
     pq.insert(6);
     for(int i = 0; i < 10; i++)
