@@ -7,6 +7,7 @@
 #include "MergeSort.h"
 #include "QuickSort.h"
 #include "MaxPQ.h"
+#include "HeapSort.h"
 using namespace std;
 
 void PQ_TEST()
@@ -24,6 +25,14 @@ void PQ_TEST()
         cout<<pq.pop()<<endl;
 }
 
+void HEAPSORT_TEST()
+{
+    vector<int> test = {3,4,2,1,7,5,8,2,5,8,8};
+    HeapSort::sort(test);
+    for(auto x : test)
+        cout<<x<<' ';
+    cout<<endl;
+}
 int main()
 {
 
@@ -37,6 +46,7 @@ int main()
         cout<<a<<' ';
     cout<<endl;*/
 
-    PQ_TEST();
+    //PQ_TEST();
+    HEAPSORT_TEST();
     return 0;
 }
