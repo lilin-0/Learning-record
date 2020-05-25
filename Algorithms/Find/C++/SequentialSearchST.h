@@ -13,7 +13,7 @@ template <class TYPE_KEY, class TYPE_VAL>
 class SequentialSearchST
 {
 private:
-    class Node          // 链表节点存储结构
+    class Node          // 节点存储结构
     {
     public:
         TYPE_KEY key;
