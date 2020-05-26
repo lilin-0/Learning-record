@@ -46,6 +46,7 @@ private:
     auto deleteMinKey(Node *pNode);
     auto deleteMaxKey(Node *pNode);
     auto deleteKey(Node *pNode, const TYPE_KEY &key);
+    auto removeMinKey(Node *pNode);
 };
 
 template <class TYPE_KEY, class TYPE_VAL>
@@ -157,9 +158,11 @@ auto BST_base<TYPE_KEY, TYPE_VAL>::put(Node *pNode, const TYPE_KEY &key, const T
         return new Node(key, val, 1);
     if(key < pNode->key)
         pNode->pLeft = put(pNode->pLeft, key, val);
-    else
+    else if(pNode->key < key)
         pNode->pRight = put(pNode->pRight, key, val);
-    pNode->N = size(pNode->pLeft) + size(pNode->pLeft) + 1;
+    else
+        pNode->val = val;
+    pNode->N = size(pNode->pLeft) + size(pNode->pRight) + 1;
     return pNode;
 }
 
@@ -281,13 +284,13 @@ auto BST_base<TYPE_KEY, TYPE_VAL>::deleteKey(BST_base::Node *pNode,const TYPE_KE
         }
         if(pNode->pLeft == nullptr)
         {
-            Node *tNode = pNode->pLeft;
+            Node *tNode = pNode->pRight;
             delete pNode;
-            return pNode->pRight;
+            return tNode;
         }
         Node *tNode = pNode;
         pNode = minKey(tNode->pRight);
-        pNode->pRight = deleteMinKey(tNode->pRight);
+        pNode->pRight = removeMinKey(tNode->pRight);
         pNode->pLeft = tNode->pLeft;
     }
     pNode->N = size(pNode->pLeft) + size(pNode->pRight) + 1;
@@ -299,6 +302,23 @@ BST_base<TYPE_KEY, TYPE_VAL>::~BST_base()
 {
     while(size(root))
         deleteMinKey();
+}
+
+/* 移除最小的节点，但不释放，用于删除节点时，替换后继节点 */
+template<class TYPE_KEY, class TYPE_VAL>
+auto BST_base<TYPE_KEY, TYPE_VAL>::removeMinKey(BST_base::Node *pNode)
+{
+    if(pNode == nullptr)
+        return pNode;
+    Node *tNode = pNode->pLeft;
+    if(tNode == nullptr)        //左节点为空，则不作处理，返回右节点
+        return pNode->pRight;
+    if(tNode->pLeft == nullptr)
+    {
+        pNode->pLeft = nullptr;
+        return pNode;
+    }
+    return removeMinKey(tNode);
 }
 
 
