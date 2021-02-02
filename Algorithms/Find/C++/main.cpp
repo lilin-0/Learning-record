@@ -4,6 +4,7 @@
 #include "SequentialSearchST.h"
 #include "BinarySearchST.h"
 #include "BST_base.h"
+#include "rb_tree.h"
 using namespace std;
 
 void test_binarySearchST()
@@ -37,9 +38,24 @@ void test_BST()
     cout<<bst.get(bst.floor(5));
 }
 
+void TEST_RBT()
+{
+    rbTree<string,int> t;
+    t.put("a",1);
+    t.put("b",2);
+    t.put("c",3);
+    t.put("aa",4);
+    t.put("bb",5);
+    t.put("cc",6);
+
+    int val = 0;
+    cout<<t.getVal("cc",val)<<endl;
+    cout<<val<<endl;
+}
 int main()
 {
-    test_BST();
+    //test_BST();
     //test_binarySearchST();
+    TEST_RBT();
     return 0;
 }
