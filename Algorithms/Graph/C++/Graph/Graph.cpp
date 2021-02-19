@@ -18,6 +18,21 @@ Graph::Graph(int v)
     }
 }
 
+Graph::Graph(const Graph &x)
+{
+    m_Adj = new vector<int> [x.m_MaxVertex];
+    if(m_Adj == nullptr)
+    {
+        return;
+    }
+    m_MaxVertex = x.m_MaxVertex;
+    for(int i = 0; i < m_MaxVertex; i++)
+    {
+        m_Adj[i] = x.m_Adj[i];
+    }
+    m_EdgeCount = x.m_EdgeCount;
+}
+
 Graph::~Graph()
 {
     delete [] m_Adj;
@@ -35,7 +50,7 @@ void Graph::addEdge(int v, int w)
     m_EdgeCount++;
 }
 
-void Graph::adj(int v, vector<int> &vOutPoint)
+void Graph::adj(int v, vector<int> &vOutPoint) const
 {
     if(v >= m_MaxVertex)
     {
@@ -44,12 +59,12 @@ void Graph::adj(int v, vector<int> &vOutPoint)
     vOutPoint = m_Adj[v];
 }
 
-int Graph::getEdgeCount()
+int Graph::getEdgeCount() const
 {
     return m_EdgeCount;
 }
 
-int Graph::getVertexCount()
+int Graph::getVertexCount() const
 {
     return m_MaxVertex;
 }

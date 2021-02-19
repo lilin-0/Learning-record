@@ -12,11 +12,12 @@ class Graph
 {
 public:
     Graph(int v);
+    Graph(const Graph &x);
     ~Graph();
     void addEdge(int v,int w);
-    void adj(int v, vector<int> &vOutPoint);
-    int getEdgeCount();
-    int getVertexCount();
+    void adj(int v, vector<int> &vOutPoint) const;
+    int getEdgeCount() const;
+    int getVertexCount() const;
 
 private:
     int m_EdgeCount;
