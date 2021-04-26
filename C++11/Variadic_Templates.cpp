@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 21:51:17
- * @LastEditTime: 2021-04-22 22:28:37
+ * @LastEditTime: 2021-04-26 21:27:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /C++11/Variadic_Templates.cpp
@@ -10,6 +10,23 @@
 #include <iostream>
 #include <functional>
 using namespace std;
+struct xxx
+{
+    int ak;
+    int b;
+};
+namespace std
+{
+    template <>
+    class hash<xxx>
+    {
+    public:
+        size_t operator()(const xxx &t)
+        {
+            return t.ak + t.b;
+        }
+    };
+}
 void print()
 {}
 template <typename T,typename... Types>
@@ -49,6 +66,6 @@ int main()
 {
     print(1, 2, 3, "xxx", bitset<16>(377), 99);
     cout << "c++" << __cplusplus << endl;
-    cout << hash_val(1, 3, 3.3) << endl;
+    cout << hash_val(1, 3, 3.3,string("aaa"),'x',xxx()) << endl;
     return 0;
 }
