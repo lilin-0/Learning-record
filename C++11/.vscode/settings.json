@@ -10,6 +10,7 @@
         "vector": "cpp",
         "__config": "cpp",
         "initializer_list": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "iostream": "cpp"
     }
 }
