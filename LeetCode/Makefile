@@ -1,5 +1,5 @@
 #题目编号
-TITLE = 1482
+TITLE = 872
 
 CXX         = g++
 LFLAGS      = -std=c++17 -Wall -g
